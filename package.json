@@ -3,9 +3,13 @@
   "displayName": "create-json-public-tagmanager-container",
   "description": "Procurara dentro do projetos as diretivas que foram criadas para gerar um json que servira como o arquivo import para enviar ao tagmanger",
   "version": "1.0.0",
-  "publisher": "juanlemau-dev@outlook.com",
+  "publisher": "create-json-public-tagmanager-container",
   "engines": {
     "vscode": "^1.99.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/juanalemau/create-json-public-tagmanager-container"
   },
   "categories": [
     "Other"
