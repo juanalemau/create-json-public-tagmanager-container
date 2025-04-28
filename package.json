@@ -2,7 +2,8 @@
   "name": "create-json-public-tagmanager-container",
   "displayName": "create-json-public-tagmanager-container",
   "description": "Procurara dentro do projetos as diretivas que foram criadas para gerar um json que servira como o arquivo import para enviar ao tagmanger",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "publisher": "juanlemau-dev@outlook.com",
   "engines": {
     "vscode": "^1.99.0"
   },
