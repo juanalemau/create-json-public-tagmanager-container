@@ -7,7 +7,7 @@ export function getAllHtmlFiles(dir: string, fileList: string[] = []): string[] 
         const fullPath = path.join(dir, file);
         if (fs.statSync(fullPath).isDirectory()) {
             getAllHtmlFiles(fullPath, fileList);
-        } else if (file.endsWith('.ts') || file.endsWith('.html')) {
+        } else if (file.endsWith('.html')) {
             fileList.push(fullPath);
         }
     });
