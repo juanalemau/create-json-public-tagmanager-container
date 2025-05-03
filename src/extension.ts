@@ -9,13 +9,14 @@ export function activate(context: vscode.ExtensionContext) {
             vscode.window.showInformationMessage('Iniciando geração do novo arquivo JSON...');
 
             const workspaceFolders = vscode.workspace.workspaceFolders;
-            if (!workspaceFolders) {
+            if (!workspaceFolders || workspaceFolders.length === 0) {
                 vscode.window.showErrorMessage('Nenhum projeto aberto!');
                 return;
             }
 
-            const projectPath = workspaceFolders[0].uri.fsPath;
             const jsonPath = 'C:/Tag-Manager/Arquivo-Json-Tag-Manager/tag-manager.json';
+            const versionsPath = 'C:/Tag-Manager/Version';
+            const novoJsonPath = 'C:/Tag-Manager/Novo-Arquivo-Json-Tag-Manager';
 
             if (!fs.existsSync(jsonPath)) {
                 vscode.window.showErrorMessage('Arquivo de configuração não encontrado!');
@@ -29,15 +30,22 @@ export function activate(context: vscode.ExtensionContext) {
 
             const originalJson = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
 
-            // Reset versions
-            const versionsPath = 'C:/Tag-Manager/Version';
-            fs.rmSync(versionsPath, { recursive: true, force: true });
-            fs.mkdirSync(versionsPath, { recursive: true });
+            // ✅ Criar as pastas se não existirem
+            if (!fs.existsSync(versionsPath)) {
+                fs.mkdirSync(versionsPath, { recursive: true });
+            } else {
+                // Se já existe, apagar e recriar
+                fs.rmSync(versionsPath, { recursive: true, force: true });
+                fs.mkdirSync(versionsPath, { recursive: true });
+            }
+
+            if (!fs.existsSync(novoJsonPath)) {
+                fs.mkdirSync(novoJsonPath, { recursive: true });
+            }
 
             let tagIdBase = 1;
             let triggerIdBase = 1;
 
-            // Se já existem tags/triggers, pegar o maior ID e continuar a partir dele
             const existingTags = originalJson.containerVersion.tag || [];
             const existingTriggers = originalJson.containerVersion.trigger || [];
 
@@ -51,7 +59,21 @@ export function activate(context: vscode.ExtensionContext) {
                 triggerIdBase = maxTriggerId + 1;
             }
 
-            const htmlFiles = getAllHtmlFiles(projectPath);
+            // ✅ Procurar todos os arquivos HTML nos projetos abertos
+            let htmlFiles: string[] = [];
+            for (const folder of workspaceFolders) {
+                const folderPath = folder.uri.fsPath;
+
+                // ✅ Mostrar na barra inferior o diretório sendo lido
+                vscode.window.setStatusBarMessage(`🔎 Procurando arquivos HTML em: ${folderPath}`, 3000);
+
+                const filesInFolder = getAllHtmlFiles(folderPath);
+                htmlFiles = htmlFiles.concat(filesInFolder);
+            }
+
+            // ✅ Depois que acabar de buscar, avisar quantos arquivos foram encontrados
+            vscode.window.showInformationMessage(`Foram encontrados ${htmlFiles.length} arquivos HTML.`);
+
             let newTags: any[] = [];
             let newTriggers: any[] = [];
 
@@ -63,15 +85,14 @@ export function activate(context: vscode.ExtensionContext) {
                     const descricao = dir.descricao || 'Unnamed';
                     const descricaoSlug = descricao.toLowerCase().replace(/\s+/g, '_').replace(/[^a-z0-9_]/g, '');
 
-                    // Verifica se já existe uma tag ou trigger com esse nome
                     const existingTag = existingTags.find((tag: any) => tag.name === `GA4 Event - ${descricao}`);
                     const existingTrigger = existingTriggers.find((trigger: any) => trigger.name === `Custom - ${descricao}`);
 
                     if (existingTag || existingTrigger) {
-                        continue; // Já existe, pula para o próximo
+                        continue;
                     }
 
-                    const currentTriggerId = triggerIdBase.toString(); // 🔥 salva o triggerId antes de incrementar
+                    const currentTriggerId = triggerIdBase.toString();
 
                     const trigger = {
                         "accountId": "6006883620",
@@ -112,7 +133,7 @@ export function activate(context: vscode.ExtensionContext) {
                             }
                         ],
                         "fingerprint": Date.now().toString(),
-                        "firingTriggerId": [currentTriggerId], // 🔥 aqui, usando o currentTriggerId correto
+                        "firingTriggerId": [currentTriggerId],
                         "tagFiringOption": "ONCE_PER_EVENT",
                         "monitoringMetadata": { "type": "MAP" },
                         "consentSettings": { "consentStatus": "NOT_SET" }
@@ -124,19 +145,16 @@ export function activate(context: vscode.ExtensionContext) {
                 }
             }
 
-            // Junta os antigos com os novos
             const updatedTags = [...existingTags, ...newTags];
             const updatedTriggers = [...existingTriggers, ...newTriggers];
 
-            // Salva os arquivos de versão
             fs.writeFileSync(path.join(versionsPath, 'tags.json'), JSON.stringify(updatedTags, null, 2));
             fs.writeFileSync(path.join(versionsPath, 'triggers.json'), JSON.stringify(updatedTriggers, null, 2));
 
-            // Atualiza o JSON principal
             originalJson.containerVersion.tag = updatedTags;
             originalJson.containerVersion.trigger = updatedTriggers;
 
-            fs.writeFileSync('C:/Tag-Manager/Novo-Arquivo-Json-Tag-Manager/tag-manager.json', JSON.stringify(originalJson, null, 2));
+            fs.writeFileSync(path.join(novoJsonPath, 'tag-manager.json'), JSON.stringify(originalJson, null, 2));
 
             vscode.window.showInformationMessage('Novo arquivo JSON gerado com sucesso!');
         } catch (error: any) {
