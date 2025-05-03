@@ -1,0 +1,41 @@
+[libGaEvento]= "{
+    event: 'esf-iumesh-acao-copiar',
+    elemento: 'button',
+    descricao: 'Botão para copiar uma resposta',
+    nome: 'btn-iumesh-copiar'
+}"
+
+POSIBILIDADES QUE PODERIA ACONTECER:
+======================================
+
+Inputs: 
+
+-> @exportTime (Determinado formato data)
+-> @accountId 
+-> @containerId
+-> @tagIds (array que esta embaixo do features)
+
+
+Validaciones: 
+
+Versão 0
+=========
+-> Posibilidad de eliminar el documento y recrear el documento.
+-> Enviar um mensaje cuando sea finalizado y cuando este procesando el proyecto. 
+-> Tag: 
+  -> Dentro del objeto que mandamos existe el tagId que es el identificador del tageamento.
+-> La configuracion clarity tambien deveria de venir por default
+-> Deveria de agarrar solamente para atualizar trigger y tag
+-> Deveria de validar la extension .json para no pasar otro archivo antiguo.
+
+Versão 1:
+============
+-> El arquivo deveria tener um diff para diferenciar o que foi alterado 
+e o as alterações que estão tendo. (atualização melhorada)
+-> Posibilidad de estructura una libreria que sea complementaria para GA y Tag manager
+-> Customizar esa parte para ter que mandar novos scripts32
+
+
+Duvidas:
+==========
+Criação "fingerprint" 
