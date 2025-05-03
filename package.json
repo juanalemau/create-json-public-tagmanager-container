@@ -2,7 +2,7 @@
   "name": "create-json-public-tagmanager-container",
   "displayName": "create-json-public-tagmanager-container",
   "description": "Procurara dentro do projetos as diretivas que foram criadas para gerar um json que servira como o arquivo import para enviar ao tagmanger",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "create-json-public-tagmanager-container",
   "engines": {
     "vscode": "^1.99.0"
@@ -33,14 +33,15 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.99.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "20.x",
+    "@types/sinon": "^17.0.4",
+    "@types/vscode": "^1.99.0",
     "@typescript-eslint/eslint-plugin": "^8.28.0",
     "@typescript-eslint/parser": "^8.28.0",
-    "eslint": "^9.23.0",
-    "typescript": "^5.8.2",
     "@vscode/test-cli": "^0.0.10",
-    "@vscode/test-electron": "^2.4.1"
+    "@vscode/test-electron": "^2.4.1",
+    "eslint": "^9.23.0",
+    "typescript": "^5.8.2"
   }
 }

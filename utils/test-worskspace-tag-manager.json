@@ -1,0 +1,248 @@
+{
+    "exportFormatVersion": 2,
+    "exportTime": "2025-04-27 21:54:31",
+    "containerVersion": {
+      "path": "accounts/6292739777/containers/218712675/versions/0",
+      "accountId": "6292739777",
+      "containerId": "218712675",
+      "containerVersionId": "0",
+      "container": {
+        "path": "accounts/6292739777/containers/218712675",
+        "accountId": "6292739777",
+        "containerId": "218712675",
+        "name": "www.testando.com",
+        "publicId": "GTM-WW24Q5BZ",
+        "usageContext": [
+          "WEB"
+        ],
+        "fingerprint": "1745789786654",
+        "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6292739777/containers/218712675/workspaces?apiLink=container",
+        "features": {
+          "supportUserPermissions": true,
+          "supportEnvironments": true,
+          "supportWorkspaces": true,
+          "supportGtagConfigs": false,
+          "supportBuiltInVariables": true,
+          "supportClients": false,
+          "supportFolders": true,
+          "supportTags": true,
+          "supportTemplates": true,
+          "supportTriggers": true,
+          "supportVariables": true,
+          "supportVersions": true,
+          "supportZones": true,
+          "supportTransformations": false
+        },
+        "tagIds": [
+          "GTM-WW24Q5BZ"
+        ]
+      },
+      "tag": [
+        {
+          "accountId": "6292739777",
+          "containerId": "218712675",
+          "tagId": "5",
+          "name": "Google Tag G-1526PMHQYE",
+          "type": "googtag",
+          "parameter": [
+            {
+              "type": "TEMPLATE",
+              "key": "tagId",
+              "value": "G-1526PMHQYE"
+            }
+          ],
+          "fingerprint": "1745790837717",
+          "firingTriggerId": [
+            "2147479573"
+          ],
+          "tagFiringOption": "ONCE_PER_EVENT",
+          "monitoringMetadata": {
+            "type": "MAP"
+          },
+          "consentSettings": {
+            "consentStatus": "NOT_SET"
+          }
+        },
+        {
+          "accountId": "6292739777",
+          "containerId": "218712675",
+          "tagId": "6",
+          "name": "Test Tag Example",
+          "type": "gaawe",
+          "parameter": [
+            {
+              "type": "BOOLEAN",
+              "key": "sendEcommerceData",
+              "value": "false"
+            },
+            {
+              "type": "BOOLEAN",
+              "key": "enhancedUserId",
+              "value": "false"
+            },
+            {
+              "type": "TEMPLATE",
+              "key": "eventName",
+              "value": "test-tag"
+            },
+            {
+              "type": "TEMPLATE",
+              "key": "measurementIdOverride",
+              "value": "G-1526PMHQYE"
+            }
+          ],
+          "fingerprint": "1745790842380",
+          "firingTriggerId": [
+            "2147479573"
+          ],
+          "tagFiringOption": "ONCE_PER_EVENT",
+          "monitoringMetadata": {
+            "type": "MAP"
+          },
+          "consentSettings": {
+            "consentStatus": "NOT_SET"
+          }
+        },
+        {
+          "accountId": "6292739777",
+          "containerId": "218712675",
+          "tagId": "7",
+          "name": "New Tag Example",
+          "type": "googtag",
+          "parameter": [
+            {
+              "type": "TEMPLATE",
+              "key": "tagId",
+              "value": "G-12345678X"
+            }
+          ],
+          "fingerprint": "1745790899999",
+          "firingTriggerId": [
+            "2147479574"
+          ],
+          "tagFiringOption": "ONCE_PER_EVENT",
+          "monitoringMetadata": {
+            "type": "MAP"
+          },
+          "consentSettings": {
+            "consentStatus": "NOT_SET"
+          }
+        }
+      ],
+      "trigger": [
+        {
+          "accountId": "6292739777",
+          "containerId": "218712675",
+          "triggerId": "4",
+          "name": "Test Trigger",
+          "type": "CLICK",
+          "fingerprint": "1745790775920"
+        },
+        {
+          "accountId": "6292739777",
+          "containerId": "218712675",
+          "triggerId": "5",
+          "name": "New Trigger Example",
+          "type": "PAGEVIEW",
+          "fingerprint": "1745790900000"
+        },
+        {
+          "accountId": "6292739777",
+          "containerId": "218712675",
+          "triggerId": "2147479574",
+          "name": "New Page Load Trigger",
+          "type": "PAGEVIEW",
+          "fingerprint": "1745790905555"
+        }
+      ],
+      "variable": [
+        {
+          "accountId": "6292739777",
+          "containerId": "218712675",
+          "variableId": "3",
+          "name": "Variable Test",
+          "type": "v",
+          "parameter": [
+            {
+              "type": "INTEGER",
+              "key": "dataLayerVersion",
+              "value": "2"
+            },
+            {
+              "type": "BOOLEAN",
+              "key": "setDefaultValue",
+              "value": "false"
+            },
+            {
+              "type": "TEMPLATE",
+              "key": "name",
+              "value": "variable-test"
+            }
+          ],
+          "fingerprint": "1745790746792",
+          "formatValue": {}
+        },
+        {
+          "accountId": "6292739777",
+          "containerId": "218712675",
+          "variableId": "4",
+          "name": "New Variable Example",
+          "type": "v",
+          "parameter": [
+            {
+                "type": "BOOLEAN",  
+                "key": "isEnabled",
+                "value": "true"
+              },
+              {
+                "type": "TEMPLATE",
+                "key": "variableName",
+                "value": "new-variable"
+              },
+              {
+                "type": "TEMPLATE",
+                "key": "name",
+                "value": "new-variable-template"
+              }
+          ],
+          "fingerprint": "1745790901111",
+          "formatValue": {}
+        }
+      ],
+      "builtInVariable": [
+        {
+          "accountId": "6292739777",
+          "containerId": "218712675",
+          "type": "PAGE_URL",
+          "name": "Page URL"
+        },
+        {
+          "accountId": "6292739777",
+          "containerId": "218712675",
+          "type": "PAGE_HOSTNAME",
+          "name": "Page Hostname"
+        },
+        {
+          "accountId": "6292739777",
+          "containerId": "218712675",
+          "type": "PAGE_PATH",
+          "name": "Page Path"
+        },
+        {
+          "accountId": "6292739777",
+          "containerId": "218712675",
+          "type": "REFERRER",
+          "name": "Referrer"
+        },
+        {
+          "accountId": "6292739777",
+          "containerId": "218712675",
+          "type": "EVENT",
+          "name": "Event"
+        }
+      ],
+      "fingerprint": "1745790871200",
+      "tagManagerUrl": "https://tagmanager.google.com/#/versions/accounts/6292739777/containers/218712675/versions/0?apiLink=version"
+    }
+  }
+  
