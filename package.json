@@ -4,7 +4,7 @@
   "description": "Procurara dentro do projetos as diretivas que foram criadas para gerar um json que servira como o arquivo import para enviar ao tagmanger",
   "version": "1.0.5",
   "publisher": "create-json-public-tagmanager-container",
-  "icon": "https://juanalemau.github.io/plugin-logo-create-json-public-tagmanager-container.github.io/logo_ajuda.png",
+  "icon": "logo/logo_ajuda.png",
   "engines": {
     "vscode": "^1.99.0"
   },
